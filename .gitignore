@@ -1,0 +1,6 @@
+/target/
+/src/main/resources/node_modules/
+/.idea
+/lib
+.DS_Store
+**/.DS_Store
