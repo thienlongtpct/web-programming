@@ -1,4 +1,49 @@
+const valid = (text) => {
+    let lines = text.split('\n');
+    // return lines.filter(line => line.trim().split(' ').length > 3).length === 0;
+    return true;
+}
+
 window.onload = () => {
+    let current = CodeMirror.fromTextArea(document.getElementById('current'), {
+        lineNumbers: true,
+        styleActiveSelected: true,
+        mode: 'text',
+        readOnly: true
+    })
+    current.setSize(null, 30);
+    current.setValue('(0, 0)');
+
+    let input = CodeMirror.fromTextArea(document.getElementById('input'), {
+        styleActiveLine: true,
+        lineNumbers: true,
+        lineWrapping: true,
+        styleActiveSelected: true,
+        mode: 'text'
+    })
+    input.setSize(null, 300);
+    input.setValue('');
+    // input.on('change', () => {
+    //     input.operation(() => {
+    //         let lines = input.getValue().split('\n');
+    //         lines.forEach((line, index) => {
+    //             if (line.trim().split(' ').length > 3) {
+    //                 let msg = document.createElement("div");
+    //                 let icon = msg.appendChild(document.createElement("span"));
+    //                 icon.innerHTML = "!";
+    //                 icon.className = "lint-error-icon";
+    //                 msg.appendChild(document.createTextNode('The input must be between 2 and 3'));
+    //                 msg.className = "lint-error";
+    //                 input.addLineWidget(index, msg, {coverGutter: false, noHScroll: true});
+    //             } else {
+    //             }
+    //         });
+    //     });
+        // let info = input.getScrollInfo();
+        // let after = input.charCoords({line: input.getCursor().line + 1, ch: 0}, "local").top;
+        // if (info.top + info.clientHeight < after)
+        //     input.scrollTo(null, after - info.clientHeight + 3);
+    // })
 
     //init board and slider
     let board = JXG.JSXGraph.initBoard('box1',{
@@ -63,9 +108,7 @@ window.onload = () => {
         let x = jxgCoordinate.usrCoords[1].toFixed(2);
         let y = jxgCoordinate.usrCoords[2].toFixed(2);
 
-        document.getElementById('xy').innerHTML = "X " + x + " R, " + "Y " + y + " R.";
-        //console.log(x + ' ' + y);
-        //console.log(window.location.href)
+        current.setValue('(' + x + ', ' + y + ')');
     });
 
     document.getElementById('box1').addEventListener('mousedown', (e,i) => {
@@ -106,10 +149,26 @@ window.onload = () => {
                 board.create('point', [x, y], {
                     color: result ? 'green' : 'red',
                     label: {visible: false}
-                })
-                let p = document.createElement('p');
-                p.innerText = '(X, Y) = (' + x + ', ' + y + ')';
-                document.body.appendChild(p);
+                });
             })
+    });
+
+
+
+    let advancedInput = document.getElementById("advanced");
+    let simpleInput = document.getElementById("simple");
+
+    advancedInput.addEventListener('click', () => {
+        if (!advancedInput.classList.contains("checked")) {
+            advancedInput.classList.toggle("checked");
+            simpleInput.classList.toggle("checked");
+        }
+    })
+
+    simpleInput.addEventListener('click', () => {
+        if (!simpleInput.classList.contains("checked")) {
+            advancedInput.classList.toggle("checked");
+            simpleInput.classList.toggle("checked");
+        }
     })
 }
