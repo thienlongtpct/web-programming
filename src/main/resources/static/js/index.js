@@ -108,19 +108,10 @@ window.onload = () => {
     document.getElementById('clearButton').addEventListener('click', () => {
         for(let i = 0; i < pointArray.length; i++){
             board.removeObject(pointArray[i]);
+            document.body.removeChild(pxyArray[i]);
         }
         pointArray = [];
+        pxyArray = [];
     })
 
-/*    let clear = () => {
-        console.log('clear!');
-    }
-
-    let clearButton = document.querySelector('button');
-    clearButton.onclick = clear;*/
-
-    //clearButton.addEventListener('click', clear);
-   /* document.getElementById('clearButton').onclick = () => {
-        console.log('got the event!')
-    }*/
 }
