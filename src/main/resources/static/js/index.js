@@ -56,37 +56,27 @@ window.onload = () => {
             dx = absolutePos[0] - currentPos[0],
             dy = absolutePos[1] - currentPos[1];
 
-
-        //console.log(currentPos + ' ' + absolutePos + ' ' + dx + ' ' + dy);
-
         let jxgCoordinate = new JXG.Coords(JXG.COORDS_BY_SCREEN, [dx, dy], board);
         let x = jxgCoordinate.usrCoords[1].toFixed(2);
         let y = jxgCoordinate.usrCoords[2].toFixed(2);
 
         document.getElementById('xy').innerHTML = "X " + x + " R, " + "Y " + y + " R.";
-        //console.log(x + ' ' + y);
-        //console.log(window.location.href)
+
     });
 
+
+    // point stored array
+    let pointArray = [];
+    let pxyArray = [];
     document.getElementById('box1').addEventListener('mousedown', (e,i) => {
         let currentPos = board.getCoordsTopLeftCorner(e,i),
             absolutePos = JXG.getPosition(e, i),
             dx = absolutePos[0] - currentPos[0],
             dy = absolutePos[1] - currentPos[1];
 
-
-        //console.log(currentPos + ' ' + absolutePos + ' ' + dx + ' ' + dy);
-
         let jxgCoordinate = new JXG.Coords(JXG.COORDS_BY_SCREEN, [dx, dy], board);
         let x = jxgCoordinate.usrCoords[1];
         let y = jxgCoordinate.usrCoords[2];
-
-        //console.log(x);
-
-        //let newURL = window.location.href + "/api/add?x=" + x + "&y=" + y;
-
-        //console.log(newURL);
-        //window.location.href = newURL;
 
         fetch('http://localhost:8080/api/add?x=' + x + '&y=' + y + '&r=' + r.Value(), {
             method: 'GET',
@@ -103,13 +93,34 @@ window.onload = () => {
                 }
             })
             .then(result => {
-                board.create('point', [x, y], {
+                let point = board.create('point', [x, y], {
                     color: result ? 'green' : 'red',
                     label: {visible: false}
                 })
+                pointArray.push(point);
                 let p = document.createElement('p');
                 p.innerText = '(X, Y) = (' + x + ', ' + y + ')';
                 document.body.appendChild(p);
+                pxyArray.push(p);
             })
     })
+
+    document.getElementById('clearButton').addEventListener('click', () => {
+        for(let i = 0; i < pointArray.length; i++){
+            board.removeObject(pointArray[i]);
+        }
+        pointArray = [];
+    })
+
+/*    let clear = () => {
+        console.log('clear!');
+    }
+
+    let clearButton = document.querySelector('button');
+    clearButton.onclick = clear;*/
+
+    //clearButton.addEventListener('click', clear);
+   /* document.getElementById('clearButton').onclick = () => {
+        console.log('got the event!')
+    }*/
 }
