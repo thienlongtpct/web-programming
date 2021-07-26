@@ -21,10 +21,10 @@ window.onload = () => {
     //             }
     //         });
     //     });
-        // let info = input.getScrollInfo();
-        // let after = input.charCoords({line: input.getCursor().line + 1, ch: 0}, "local").top;
-        // if (info.top + info.clientHeight < after)
-        //     input.scrollTo(null, after - info.clientHeight + 3);
+    // let info = input.getScrollInfo();
+    // let after = input.charCoords({line: input.getCursor().line + 1, ch: 0}, "local").top;
+    // if (info.top + info.clientHeight < after)
+    //     input.scrollTo(null, after - info.clientHeight + 3);
     // })
 
     //init board
@@ -154,20 +154,122 @@ window.onload = () => {
         addPoint(x, y, r.Value(), '');
     });
 
-    let advancedInput = document.getElementById("advanced");
-    let simpleInput = document.getElementById("simple");
+    let advancedInput = document.getElementById('advanced');
+    let simpleInput = document.getElementById('simple');
 
     advancedInput.addEventListener('click', () => {
-        if (!advancedInput.classList.contains("checked")) {
-            advancedInput.classList.toggle("checked");
-            simpleInput.classList.toggle("checked");
+        if (!advancedInput.classList.contains('checked')) {
+            advancedInput.classList.toggle('checked');
+            simpleInput.classList.toggle('checked');
         }
     })
 
     simpleInput.addEventListener('click', () => {
-        if (!simpleInput.classList.contains("checked")) {
-            advancedInput.classList.toggle("checked");
-            simpleInput.classList.toggle("checked");
+        if (!simpleInput.classList.contains('checked')) {
+            advancedInput.classList.toggle('checked');
+            simpleInput.classList.toggle('checked');
         }
     })
+
+    let viewModeInput = document.getElementById('view mode');
+    let selectModeInput = document.getElementById('select mode');
+    let deleteModeInput = document.getElementById('delete mode');
+
+
+    viewModeInput.addEventListener('click', () => {
+        if(!viewModeInput.classList.contains('checked')){
+            viewModeInput.classList.toggle('checked');
+        }
+        if(selectModeInput.classList.contains('checked')){
+            selectModeInput.classList.toggle('checked');
+        }
+        if(deleteModeInput.classList.contains('checked')){
+            deleteModeInput.classList.toggle('checked');
+        }
+    })
+
+    selectModeInput.addEventListener('click', () => {
+        if(viewModeInput.classList.contains('checked')){
+            viewModeInput.classList.toggle('checked');
+        }
+        if(!selectModeInput.classList.contains('checked')){
+            selectModeInput.classList.toggle('checked');
+        }
+        if(deleteModeInput.classList.contains('checked')){
+            deleteModeInput.classList.toggle('checked');
+        }
+    })
+
+    deleteModeInput.addEventListener('click', () => {
+        if(viewModeInput.classList.contains('checked')){
+            viewModeInput.classList.toggle('checked');
+        }
+        if(selectModeInput.classList.contains('checked')){
+            selectModeInput.classList.toggle('checked');
+        }
+        if(!deleteModeInput.classList.contains('checked')){
+            deleteModeInput.classList.toggle('checked');
+        }
+    })
+
+    let overviewInput = document.getElementById('overview');
+    let instructionInput = document.getElementById('instruction');
+    let notationInput = document.getElementById('notation');
+
+    let overviewContent = document.getElementById('overviewContent');
+    let instructionContent = document.getElementById('instructionContent');
+    let notationContent = document.getElementById('notationContent');
+
+    overviewInput.addEventListener('click', () => {
+        if(!overviewInput.classList.contains('checked')){
+            overviewInput.classList.toggle('checked');
+            overviewContent.style.display = 'block';
+        }
+        if(instructionInput.classList.contains('checked')){
+            instructionInput.classList.toggle('checked');
+            instructionContent.style.display = 'none';
+
+        }
+        if(notationInput.classList.contains('checked')){
+            notationInput.classList.toggle('checked');
+            notationContent.style.display = 'none';
+
+        }
+
+    })
+
+    instructionInput.addEventListener('click', () => {
+        if(overviewInput.classList.contains('checked')){
+            overviewInput.classList.toggle('checked');
+            overviewContent.style.display = 'none';
+        }
+        if(!instructionInput.classList.contains('checked')){
+            instructionInput.classList.toggle('checked');
+            instructionContent.style.display = 'block';
+
+        }
+        if(notationInput.classList.contains('checked')){
+            notationInput.classList.toggle('checked');
+            notationContent.style.display = 'none';
+        }
+    })
+
+    notationInput.addEventListener('click', () => {
+        if(overviewInput.classList.contains('checked')){
+            overviewInput.classList.toggle('checked');
+            overviewContent.style.display = 'none';
+
+        }
+        if(instructionInput.classList.contains('checked')){
+            instructionInput.classList.toggle('checked');
+            instructionContent.style.display = 'none';
+
+        }
+        if(!notationInput.classList.contains('checked')){
+            notationInput.classList.toggle('checked');
+            notationContent.style.display = 'block';
+
+        }
+    })
+
 }
