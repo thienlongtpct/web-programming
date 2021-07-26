@@ -14,7 +14,7 @@ public class DemoController {
         if(y < -r) return false;
         if(x < 0 && y < 0) return false;
         if(x < 0){
-            if( x * x + y * y > r * r) return false;
+            return !(x * x + y * y > r * r);
         }
         else{
             if(y > 0)  return Math.abs(x-r) > 2*y;
