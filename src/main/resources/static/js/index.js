@@ -157,10 +157,15 @@ window.onload = () => {
     let advancedInput = document.getElementById('advanced');
     let simpleInput = document.getElementById('simple');
 
+    let advanceContent = document.getElementById('advanced-content');
+    let simpleContent = document.getElementById('simple-content')
+
     advancedInput.addEventListener('click', () => {
         if (!advancedInput.classList.contains('checked')) {
             advancedInput.classList.toggle('checked');
             simpleInput.classList.toggle('checked');
+            advanceContent.style.display = 'block';
+            simpleContent.style.display ='none';
         }
     })
 
@@ -168,6 +173,8 @@ window.onload = () => {
         if (!simpleInput.classList.contains('checked')) {
             advancedInput.classList.toggle('checked');
             simpleInput.classList.toggle('checked');
+            advanceContent.style.display = 'none';
+            simpleContent.style.display ='block';
         }
     })
 
@@ -268,8 +275,40 @@ window.onload = () => {
         if(!notationInput.classList.contains('checked')){
             notationInput.classList.toggle('checked');
             notationContent.style.display = 'block';
-
         }
     })
 
+    document.getElementById('submit-button').addEventListener('click', () => {
+
+        let xValueList = document.getElementsByName('x_value');
+        let yValue = document.getElementById('y_value');
+        let rValueList = document.getElementsByName('r_value');
+
+        if(yValue.value === "" || +yValue.value < -5.0 || +yValue.value > 5.0){
+            alert('Please enter Y with value from -5.0 to 5.0');
+        }
+
+        let y = yValue.value;
+        let x;
+        let r;
+
+        for(let i = 0; i < xValueList.length; i++){
+            if(xValueList[i].checked){
+                x = xValueList[i].value;
+            }
+        }
+
+        for(let i = 0; i < rValueList.length; i++){
+            if(rValueList[i].checked){
+                r = rValueList[i].value;
+            }
+        }
+
+        console.log(x);
+        console.log(y);
+        console.log(r);
+
+
+        addPoint(x, y, r);
+    })
 }

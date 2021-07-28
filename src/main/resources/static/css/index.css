@@ -33,6 +33,24 @@ button {
 
 }
 
+#choose-x {
+    margin: 0 3px;
+    padding: 5px;
+}
+
+.x-button-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.r-button-line{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .button-group {
     margin-top: 15px;
     margin-bottom: 30px;

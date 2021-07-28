@@ -30,31 +30,61 @@
             <button class="button" id="simple">Simple</button>
         </div>
 
-        <label for="current">Current points</label>
-        <textarea id="current" required autofocus></textarea>
+        <div id="advanced-content">
+            <label for="current">Current points</label>
+            <textarea id="current" required autofocus></textarea>
 
-        <label for="input">Selected points</label>
-        <textarea id="input" required autofocus></textarea>
-        <!--            <div id="choose-x">-->
-        <!--                <input type="radio" id="x_-3" name="fav_language" value="-3">-->
-        <!--                <label for="x_-3">-3</label><br>-->
-        <!--                <input type="radio" id="x_-2" name="fav_language" value="-2">-->
-        <!--                <label for="x_-2">-2</label><br>-->
-        <!--                <input type="radio" id="x_-1" name="fav_language" value="-1">-->
-        <!--                <label for="x_-1">-1</label><br>-->
-        <!--                <input type="radio" id="x_0" name="fav_language" value="0">-->
-        <!--                <label for="x_0">0</label><br>-->
-        <!--                <input type="radio" id="x_1" name="fav_language" value="1">-->
-        <!--                <label for="x_1">1</label><br>-->
-        <!--                <input type="radio" id="x_2" name="fav_language" value="2">-->
-        <!--                <label for="x_2">2</label><br>-->
-        <!--                <input type="radio" id="x_3" name="fav_language" value="3">-->
-        <!--                <label for="x_3">3</label><br>-->
-        <!--                <input type="radio" id="x_4" name="fav_language" value="4">-->
-        <!--                <label for="x_4">4</label><br>-->
-        <!--                <input type="radio" id="x_5" name="fav_language" value="5">-->
-        <!--                <label for="x_5">5</label><br>-->
-        <!--            </div>-->
+            <label for="input">Selected points</label>
+            <textarea id="input" required autofocus></textarea>
+        </div>
+
+        <div id="simple-content" style="display: none">
+            <label for="simple">Select X: </label>
+            <div class="x-button-line">
+                <input type="radio" id="x_-3" name="x_value" value="-3" checked>
+                <label for="x_-3">-3</label><br>
+                <input type="radio" id="x_-2" name="x_value" value="-2">
+                <label for="x_-2">-2</label><br>
+                <input type="radio" id="x_-1" name="x_value" value="-1">
+                <label for="x_-1">-1</label><br>
+                <input type="radio" id="x_0" name="x_value" value="0">
+                <label for="x_0">0</label><br>
+                <input type="radio" id="x_1" name="x_value" value="1">
+                <label for="x_1">1</label><br>
+                <input type="radio" id="x_2" name="x_value" value="2">
+                <label for="x_2">2</label><br>
+                <input type="radio" id="x_3" name="x_value" value="3">
+                <label for="x_3">3</label><br>
+                <input type="radio" id="x_4" name="x_value" value="4">
+                <label for="x_4">4</label><br>
+                <input type="radio" id="x_5" name="x_value" value="5">
+                <label for="x_5">5</label><br>
+            </div>
+            <label for="simple">Enter Y: </label>
+            <label for="simple">
+                <textarea id="y_value" rows="1" cols="5" style="margin-left: 10px; margin-top: 5px;" required autofocus></textarea>
+            </label>
+            <br>
+            <label for="simple">
+                Select R:
+            </label>
+            <div class="r-button-line">
+                <input type="radio" id="r_1" name="r_value" value="1" checked>
+                <label for="r_1">1</label><br>
+                <input type="radio" id="r_1.5" name="r_value" value="1.5">
+                <label for="r_1.5">1.5</label><br>
+                <input type="radio" id="r_2" name="r_value" value="2">
+                <label for="r_2">2</label><br>
+                <input type="radio" id="r_2.5" name="r_value" value="2.5">
+                <label for="r_2.5">2.5</label><br>
+                <input type="radio" id="r_3" name="r_value" value="3">
+                <label for="r_3">3</label><br>
+            </div>
+
+            <div class="button-group">
+                <input class="button" type="submit" value="Submit" id="submit-button">
+            </div>
+        </div>
     </div>
     <div id="center">
         <div class="button-group">
